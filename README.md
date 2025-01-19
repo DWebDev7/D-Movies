@@ -9,3 +9,6 @@ Currently, two official plugins are available:
 # D-Movies
 
 <!-- git add . commit -m 'i am committing this' push -u origin main -->
+
+<!-- To push: 
+git add . && git commit -m 'Auto-commit' && git push -u origin main -->
