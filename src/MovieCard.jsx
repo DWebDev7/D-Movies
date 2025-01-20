@@ -3,7 +3,7 @@ import React from "react";
 const MovieCard = ({ movie }) => {
   return (
     <>
-      <div className="w-56   overflow-hidden transform transition-transform ease-in-out hover:-translate-y-4 duration-300">
+      <div className="w-56   overflow-hidden transform transition-transform ease-in-out hover:-translate-y-4 duration-700">
         <div>
           {movie.poster ? (
             <img
@@ -12,7 +12,7 @@ const MovieCard = ({ movie }) => {
               className="w-full h-auto rounded-sm shadow-lg"
             />
             ) : (
-              <div className="w-full h-64 bg-gray-700 shadow-sm rounded-sm flex items-center justify-center">
+              <div className="w-full h-80 bg-gray-700 shadow-sm rounded-sm flex items-center justify-center">
                 <span className="text-gray-400">No Image Available</span>
               </div>
             )}

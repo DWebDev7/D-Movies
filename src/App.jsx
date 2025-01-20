@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import MovieCard from "./MovieCard.jsx";
 import "./App.css";
 import "./index.css";
-import SearchIcon from "./search.svg";
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 // TMDb API
 const API_URL = "https://api.themoviedb.org/3";
@@ -58,25 +58,31 @@ const App = () => {
     fetchBlockbusterMovies(); // Fetch the latest blockbuster movies on initial load
   }, []);
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      // Trigger button click (searchMovies function) when Enter key is pressed
+      searchMovies(searchTerm);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#212121] text-white flex flex-col items-center p-6">
       <h1 className="text-4xl font-bold bg-gradient-to-r from-yellow-400 to-transparent bg-clip-text text-transparent">
-        DMovies
+        PIXEO
       </h1>
-      <div className="flex items-center bg-gray-800 rounded-full shadow-lg p-4 mt-8 w-5/6 md:w-1/2">
+      <div className="flex items-centerrounded-sm border border-[#555555] shadow-lg p-4 mt-8 w-5/6">
         <input
           type="text"
-          className="flex-grow bg-transparent outline-none text-lg text-gray-300"
+          className="ml-3 flex-grow bg-transparent outline-none text-lg text-gray-300 border-r-2 border-[#555555]"
           placeholder="Search for movies"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyDown={handleKeyDown} // Attach keydown listener
         />
-        <img
-          src={SearchIcon}
-          alt="search"
-          className="w-8 h-8 cursor-pointer"
+        <button
+          className="text-lg cursor-pointer mx-4"
           onClick={() => searchMovies(searchTerm)}
-        />
+        ><i class="bi bi-search"></i></button>
       </div>
       {movies?.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 mt-20">
@@ -86,7 +92,6 @@ const App = () => {
               movie={{
                 title: movie.title,
                 poster: movie.poster_path
-
                   ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
                   : null,
                 release_date: movie.release_date,
