@@ -59,7 +59,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center p-6">
+    <div className="min-h-screen bg-[#212121] text-white flex flex-col items-center p-6">
       <h1 className="text-4xl font-bold bg-gradient-to-r from-yellow-400 to-transparent bg-clip-text text-transparent">
         DMovies
       </h1>
@@ -79,13 +79,14 @@ const App = () => {
         />
       </div>
       {movies?.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mt-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 mt-20">
           {movies.map((movie) => (
             <MovieCard
               key={movie.id}
               movie={{
                 title: movie.title,
                 poster: movie.poster_path
+
                   ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
                   : null,
                 release_date: movie.release_date,
